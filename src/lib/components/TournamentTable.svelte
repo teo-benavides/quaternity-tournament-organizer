@@ -2,9 +2,11 @@
   import { players } from "$lib/stores";
 
   export let tournament: Tournament | undefined;
+  export let tournamentName: string;
 </script>
 
 {#if tournament}
+  <h1 class="text-3xl font-bold">{tournamentName}</h1>
   <div class="flex flex-row space-x-8">
     <table id="player-table">
       <tbody>

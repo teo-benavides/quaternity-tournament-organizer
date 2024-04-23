@@ -37,6 +37,7 @@
   let tableNumber: number = 4;
   let playerName: string = "";
   let gameReady: boolean = false;
+  let tournamentName: string = "";
   let tournament: Tournament | undefined = undefined;
 
   function addPlayer() {
@@ -106,13 +107,15 @@
 >
   <span>Jugadores</span>
   <span>{$players.length} ({tableNumber * 4})</span>
+  <input class="border p-2 bg-white" type="text" placeholder="Nombre del torneo" bind:value={tournamentName} />
   <form
     on:submit={(e) => {
       e.preventDefault();
       addPlayer();
     }}
   >
-    <input class="border p-2 bg-white" type="text" bind:value={playerName} />
+
+    <input class="border p-2 bg-white" type="text" placeholder="Nombre de jugador" bind:value={playerName} />
     <button class="border p-2 bg-white">+</button>
   </form>
   <PlayerList />
@@ -127,7 +130,7 @@
       on:click={() => startGame()}>Create Game</button
     >
   </div>
-  <TournamentTable {tournament} />
+  <TournamentTable {tournament} {tournamentName} />
   {#if tournament}
   <button
     class="p-4 border rounded text-white bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 disabled:bg-slate-300 disabled:text-slate-500"
